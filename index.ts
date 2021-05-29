@@ -151,3 +151,23 @@ const staircase = (num: number): void => {
   }
 };
 staircase(10);
+
+//9.===============================================================
+// 🌎 https://www.hackerrank.com/challenges/time-conversion/problem
+const s = "12:09:45PM";
+const timeConversion = (s: string): string => {
+  let militaryTimeFormat = "";
+  const slicedAMPN = s.slice(8, 10);
+  const slicedHours = s.slice(0, 2);
+  const convertedString = (parseInt(slicedHours) + 12).toString();
+
+  if (slicedAMPN === "PM" && slicedHours !== "12") {
+    militaryTimeFormat = s.replace(slicedHours, convertedString).slice(0, 8);
+  } else if (slicedHours === "12" && slicedAMPN === "AM") {
+    militaryTimeFormat = s.replace(slicedHours, "00").slice(0, 8);
+  } else militaryTimeFormat = s.slice(0, 8);
+
+  return militaryTimeFormat;
+};
+
+console.log(timeConversion(s));

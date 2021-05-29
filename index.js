@@ -138,3 +138,22 @@ var staircase = function (num) {
     }
 };
 staircase(10);
+//9.===============================================================
+// 🌎 https://www.hackerrank.com/challenges/time-conversion/problem
+var s = "12:09:45PM";
+var timeConversion = function (s) {
+    var militaryTimeFormat = "";
+    var slicedAMPN = s.slice(8, 10);
+    var slicedHours = s.slice(0, 2);
+    var convertedString = (parseInt(slicedHours) + 12).toString();
+    if (slicedAMPN === "PM" && slicedHours !== "12") {
+        militaryTimeFormat = s.replace(slicedHours, convertedString).slice(0, 8);
+    }
+    else if (slicedHours === "12" && slicedAMPN === "AM") {
+        militaryTimeFormat = s.replace(slicedHours, "00").slice(0, 8);
+    }
+    else
+        militaryTimeFormat = s.slice(0, 8);
+    return militaryTimeFormat;
+};
+console.log(timeConversion(s));
