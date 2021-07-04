@@ -1,3 +1,4 @@
+"use strict";
 /*1.=============================================================
 ❓  Print the sum of the array's elements as a single integer.
 */
@@ -157,3 +158,35 @@ var timeConversion = function (s) {
     return militaryTimeFormat;
 };
 console.log(timeConversion(s));
+//9.===============================================================
+// 🌎 https://www.hackerrank.com/challenges/find-digits/problem?h_r=next-challenge&h_v=zen
+var n = 101054;
+var findDigits = function (n) {
+    var zeroRemainderCount = 0;
+    var digitsArr = String(n).split("").map(Number);
+    for (var i in digitsArr) {
+        if (digitsArr[i] !== 0 && digitsArr[i] % digitsArr[i] === 0)
+            zeroRemainderCount++;
+    }
+    return zeroRemainderCount;
+};
+console.log(findDigits(n));
+//10.===============================================================
+// 🌎 https://www.hackerrank.com/challenges/grading/problem
+var grades = [4, 73, 67, 38, 33];
+function gradingStudents(grades) {
+    return grades.map(function (grade) {
+        if (grade < 38)
+            return grade;
+        return applyRound(grade);
+    });
+    function applyRound(grade) {
+        if (grade % 5 >= 3) {
+            return grade + (5 - (grade % 5));
+        }
+        else {
+            return grade;
+        }
+    }
+}
+console.log("Grades Result: " + gradingStudents(grades));

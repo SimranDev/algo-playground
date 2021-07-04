@@ -154,7 +154,7 @@ staircase(10);
 
 //9.===============================================================
 // 🌎 https://www.hackerrank.com/challenges/time-conversion/problem
-const s = "12:09:45PM";
+const s: string = "12:09:45PM";
 const timeConversion = (s: string): string => {
   let militaryTimeFormat = "";
   const slicedAMPN = s.slice(8, 10);
@@ -171,3 +171,41 @@ const timeConversion = (s: string): string => {
 };
 
 console.log(timeConversion(s));
+
+//9.===============================================================
+// 🌎 https://www.hackerrank.com/challenges/find-digits/problem?h_r=next-challenge&h_v=zen
+let n: number = 101054;
+const findDigits = (n: number): number => {
+  let zeroRemainderCount = 0;
+  let digitsArr = String(n).split("").map(Number);
+  for (const i in digitsArr) {
+    if (digitsArr[i] !== 0 && digitsArr[i] % digitsArr[i] === 0)
+      zeroRemainderCount++;
+  }
+
+  return zeroRemainderCount;
+};
+
+console.log(findDigits(n));
+
+//10.===============================================================
+// 🌎 https://www.hackerrank.com/challenges/grading/problem
+let grades: number[] = [4, 73, 67, 38, 33];
+
+function gradingStudents(grades: number[]): number[] {
+  return grades.map((grade) => {
+    if (grade < 38) return grade;
+
+    return applyRound(grade);
+  });
+
+  function applyRound(grade: number): number {
+    if (grade % 5 >= 3) {
+      return grade + (5 - (grade % 5));
+    } else {
+      return grade;
+    }
+  }
+}
+
+console.log(`Grades Result: ${gradingStudents(grades)}`);
